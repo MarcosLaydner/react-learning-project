@@ -1,3 +1,4 @@
+import Button from '../Button/Button'
 import DropDown from '../DropDown'
 import TextField from '../TextField/TextField'
 import './Form.css'
@@ -14,14 +15,20 @@ const Form = () => {
         'Inovação e Gestão'
     ]
 
+    const onSave = (event) => {
+        event.preventDefault()
+        console.log("Submitted")
+    }
+
     return (
         <section className='formulario'>
-        <form >
+        <form onSubmit={onSave}>
             <h2>Peencha os Campo para criar o card do colaborador</h2>
-            <TextField label="Nome" placeholder="Digite seu nome"/>
-            <TextField label="Cargo" placeholder="Digite seu cargo"/>
+            <TextField required={true} label="Nome" placeholder="Digite seu nome"/>
+            <TextField required={true} label="Cargo" placeholder="Digite seu cargo"/>
             <TextField label="Imagem" placeholder="Digite o endereço da imagem"/>
-            <DropDown label="Time" items={times}/>
+            <DropDown required={true} label="Time" items={times}/>
+            <Button text="Criar">Criar</Button>
         </form>
         </section>
   )
