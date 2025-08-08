@@ -54,7 +54,11 @@ function App() {
     <div className="App">
       <Banner/>
       <Form teams={times.map(team => team.name)} onSubmit={onNewEmployee}/>
-      {times.map(team => <Team key={team.name} team={team}/>)}
+      {times.map(team => <Team
+        key={team.name}
+        team={team}
+        employees={employees.filter(employee => employee.team === team.name)}
+      />)}
     </div>
   );
 }
